@@ -1,0 +1,15 @@
+## 📦 Installation
+
+### Using Vite
+
+```bash
+npm create vite@latest (Project Name) -- --template react
+cd my-todo-app
+npm install
+npm run dev
+
+
+
+cd (Project Name)
+npm install
+npm start

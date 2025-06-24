@@ -1,4 +1,5 @@
 import "./App.css";
+import ContactHeader from "./Components/ContactHeader";
 import Navgation from "./Components/Navgation";
 
 function App() {
@@ -6,6 +7,7 @@ function App() {
     <>
       <div>
         <Navgation />
+        <ContactHeader/>
       </div>
     </>
   );
