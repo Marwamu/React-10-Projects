@@ -1,0 +1,7 @@
+.hero {
+  /* height: calc(100vh - 72px); */
+  align-items: center;
+}
+.hero-content {
+  max-width: 975px;
+}

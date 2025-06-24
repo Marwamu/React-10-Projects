@@ -1,23 +1,29 @@
 import React from "react";
+import "./ContactForm.css"
+import { MdMessage } from "react-icons/md";
+import { MdOutlineMessage } from "react-icons/md";
+import { FaPhoneAlt } from "react-icons/fa";
 
-const Form = () => {
+
+
+const ContactForm = () => {
   return (
     <div className="container form-content">
       <form>
         <div className="contact-btns">
           <div className="message-phone">
             <button className="primary-btn message">
-              <img src=".\images\message.png" alt="" />
+              <MdMessage />
               VIA SUPPORT CHAT
             </button>
             <button className="primary-btn phone">
-              <img src=".\images\phone.png" alt="" />
+              <FaPhoneAlt/>
               VIA CALL
             </button>
           </div>
           <div className="email">
             <button className="secondary-btn message">
-              <img src=".\images\message-black.png" alt="" />
+             <MdOutlineMessage />
               VIA EMAIL FORM
             </button>
           </div>
@@ -52,4 +58,4 @@ const Form = () => {
   );
 };
 
-export default Form;
+export default ContactForm;

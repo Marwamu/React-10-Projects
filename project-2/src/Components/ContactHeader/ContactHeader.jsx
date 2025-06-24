@@ -1,4 +1,6 @@
 import React from "react";
+import "./ContactHeader.css";
+
 
 const Hero = () => {
   return (

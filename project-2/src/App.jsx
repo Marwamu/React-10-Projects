@@ -1,6 +1,7 @@
 import "./App.css";
-import ContactHeader from "./Components/ContactHeader";
-import Navgation from "./Components/Navgation";
+import ContactForm from "./Components/ContactForm/ContactForm.jsx";
+import ContactHeader from "./Components/ContactHeader/ContactHeader.jsx";
+import Navgation from "./Components/Navagation/Navgation.jsx";
 
 function App() {
   return (
@@ -8,6 +9,7 @@ function App() {
       <div>
         <Navgation />
         <ContactHeader/>
+        <ContactForm/>
       </div>
     </>
   );
