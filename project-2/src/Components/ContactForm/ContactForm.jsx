@@ -6,9 +6,9 @@ import { FaPhoneAlt } from "react-icons/fa";
 import { useState } from "react";
 
 const ContactForm = () => {
-  const [name, setName] = useState("Marwa");
-  const [email, setEmail] = useState("support@dosomecoding.com");
-  const [text, setText] = useState("Subscribe to this channel");
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [text, setText] = useState("");
   const onSubmit = (e) => {
     e.preventDefault();
 
@@ -31,51 +31,60 @@ const ContactForm = () => {
   return (
     <div className="All-contact">
       <div className="form-section">
-           <div className="contact-btns">
-        <div className="message-phone">
-          <button className="primary_btn message">
-            <MdMessage />
-            VIA SUPPORT CHAT
-          </button>
-          <button onClick={onViaCallSubmit} className="primary_btn phone">
-            <FaPhoneAlt />
-            VIA CALL
-          </button>
-        </div>
-        <div className="email">
-          <button className="secondary-btn message">
-            <MdOutlineMessage />
-            VIA EMAIL FORM
-          </button>
-        </div>
-      </div>
-          <form className="form-content" onSubmit={onSubmit}>
-        <div className="form-body">
-          <div className="inputs">
-            <div className="form_control">
-              <label htmlFor="name">NAME</label>
-              <input type="text" name="name" id="name" />
-            </div>
-            <div className="form_control">
-              <label htmlFor="email">E-Mail</label>
-              <input type="email" name="email" id="email" />
-            </div>
-            <div className="form_control">
-              <label htmlFor="text">TEXT</label>
-              <input className="text-area" type="text" name="text" id="text" />
-            </div>
+        <div className="contact-btns">
+          <div className="message-phone">
+            <button className="primary_btn message">
+              <MdMessage />
+              VIA SUPPORT CHAT
+            </button>
+            <button onClick={onViaCallSubmit} className="primary_btn phone">
+              <FaPhoneAlt />
+              VIA CALL
+            </button>
           </div>
-          <div className="submit-btn">
-            <button type="submit" className="primary_btn">
-              SUBMIT
+          <div className="email">
+            <button className="secondary-btn message">
+              <MdOutlineMessage />
+              VIA EMAIL FORM
             </button>
           </div>
         </div>
-      </form>
+        <form className="form-content" onSubmit={onSubmit}>
+          <div className="form-body">
+            <div className="inputs">
+              <div className="form_control">
+                <label htmlFor="name">NAME</label>
+                <input type="text" name="name" id="name" />
+              </div>
+              <div className="form_control">
+                <label htmlFor="email">E-Mail</label>
+                <input type="email" name="email" id="email" />
+              </div>
+              <div className="form_control">
+                <label htmlFor="text">TEXT</label>
+                <input
+                  className="text-area"
+                  type="text"
+                  name="text"
+                  id="text"
+                />
+              </div>
+            </div>
+            <div className="submit-btn">
+              <button type="submit" className="primary_btn">
+                SUBMIT
+              </button>
+            
+            </div>  
+            <div className="data"> 
+                <div>{name }</div>
+                <div>{email}</div>
+                <div>{text}</div>
+              </div>
+          </div>
+        </form>
       </div>
-   
-  
-        <div>
+      <div>
         <img src=".\images\service.svg" alt="" />
       </div>
     </div>
