@@ -8,6 +8,7 @@ function App() {
     <>
       <div>
         <Navgation />
+              <main className="container"></main>
         <ContactHeader/>
         <ContactForm/>
       </div>
