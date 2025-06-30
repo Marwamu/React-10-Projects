@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-const StartPage = () => {
+const StartPage = ({toggle}) => {
   const playNow = () => {
     window.location.href = "/game";
   };
@@ -12,7 +12,7 @@ const StartPage = () => {
       </div>
       <div className="start-content">
         <h1>DICE GAME</h1>
-        <Button onClick={playNow}>Play Now</Button>
+        <Button onClick={toggle}>Play Now</Button>
       </div>
     </Container>
   );
@@ -66,7 +66,7 @@ const Button = styled.button`
     background: white;
     border: 1px solid #000;
     color: black;
-    transition: color 0.3s ease-in-out, background 0.3s ease-in-out,
+    transition: color 0.3s ease-in-out,  background 0.3s ease-in-out,
       border 0.3s ease-in-out;
   }
 `;
