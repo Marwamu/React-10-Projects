@@ -6,8 +6,9 @@ function GamePlay() {
   const [score, setScore] = useState(0);
   const [selectedNumber, setSelectedNumber] = useState(null);
   const [rolledNumber, setRolledNumber] = useState(1);
+  const [errorVisible, setErrorVisible] = useState(false);
 
-  const toggleRules = () => setShowRules(prev => !prev);
+  const toggleRules = () => setShowRules((prev) => !prev);
 
   const handleNumberSelect = (num) => {
     setSelectedNumber(num);
@@ -15,22 +16,29 @@ function GamePlay() {
   };
 
   const rollDice = () => {
-    if (selectedNumber === null) return;
+    if (selectedNumber === null) {
+      setErrorVisible(true); // show error
+      return; // stop execution
+    }
+
+    setErrorVisible(false); // hide error
 
     const random = Math.ceil(Math.random() * 6);
     setRolledNumber(random);
 
     if (random === selectedNumber) {
-      setScore(prev => prev + random);
+      setScore((prev) => prev + random);
     } else {
-      setScore(prev => Math.max(prev - 2, 0));
+      setScore((prev) => Math.max(prev - 2, 0));
     }
   };
 
   const resetScore = () => {
+   
     setScore(0);
     setSelectedNumber(null);
     setRolledNumber(1);
+     setErrorVisible(false); 
   };
 
   return (
@@ -42,11 +50,16 @@ function GamePlay() {
         </div>
 
         <div className="select-dice">
+          {errorVisible && (
+            <p className="error-message">You have not selected any number</p>
+          )}{" "}
           <ul>
             {[1, 2, 3, 4, 5, 6].map((num) => (
               <li key={num}>
                 <button
-                  className={`select-no ${selectedNumber === num ? "selected" : ""}`}
+                  className={`select-no ${
+                    selectedNumber === num ? "selected" : ""
+                  }`}
                   onClick={() => handleNumberSelect(num)}
                 >
                   {num}
@@ -61,7 +74,10 @@ function GamePlay() {
       <div className="dices-section">
         <div className="dice">
           <button onClick={rollDice}>
-            <img src={`./images/dice_${rolledNumber}.png`} alt={`Dice ${rolledNumber}`} />
+            <img
+              src={`./images/dice_${rolledNumber}.png`}
+              alt={`Dice ${rolledNumber}`}
+            />
           </button>
           <p>Click on Dice to roll</p>
         </div>
@@ -81,7 +97,8 @@ function GamePlay() {
             <li>Select any number</li>
             <li>Click on dice image</li>
             <li>
-              If your selected number matches the dice roll, you gain points equal to the dice number.
+              If your selected number matches the dice roll, you gain points
+              equal to the dice number.
             </li>
             <li>If your guess is wrong, 2 points will be deducted.</li>
           </ul>
@@ -128,6 +145,7 @@ const GameContainer = styled.div`
     letter-spacing: 0%;
   }
   .dice button {
+    cursor: pointer;
     border: none;
     background: transparent;
   }
@@ -138,12 +156,20 @@ const GameContainer = styled.div`
     align-items: end;
     gap: 8px;
   }
+  .select-dice .error-message {
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    color: #ff0c0c;
+  }
   .select-dice p {
     font-weight: 700;
     font-size: 24px;
     line-height: 100%;
     letter-spacing: 0%;
   }
+
   .select-dice ul {
     margin: 0;
     display: flex;
@@ -171,7 +197,7 @@ const GameContainer = styled.div`
     height: 100%;
     background: transparent;
     border: none;
-    cursor: pointer;
+    cursor: pointer !important;
     font-weight: 700;
     font-size: 24px;
     line-height: 100%;
@@ -229,6 +255,16 @@ const GameContainer = styled.div`
     letter-spacing: 0%;
     margin-bottom: 24px;
     list-style: none;
+  }
+  .select-no {
+    cursor: pointer;
+  }
+  .select-no.selected {
+    cursor: pointer;
+    background-color: #000;
+    color: #fff;
+    border: 2px solid #000;
+    transition: 0.3s ease-in-out;
   }
 `;
 const Button = styled.button`
