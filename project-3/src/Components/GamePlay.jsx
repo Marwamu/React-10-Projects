@@ -7,12 +7,13 @@ function GamePlay() {
   const [selectedNumber, setSelectedNumber] = useState(null);
   const [rolledNumber, setRolledNumber] = useState(1);
   const [errorVisible, setErrorVisible] = useState(false);
-
+  const arrNum = [1,2,3,4,5,6];
   const toggleRules = () => setShowRules((prev) => !prev);
 
   const handleNumberSelect = (num) => {
     setSelectedNumber(num);
-    setRolledNumber(num); // Show the selected dice before roll
+    setRolledNumber(num);
+    setErrorVisible(false); // Show the selected dice before roll
   };
 
   const rollDice = () => {
@@ -34,11 +35,10 @@ function GamePlay() {
   };
 
   const resetScore = () => {
-   
     setScore(0);
     setSelectedNumber(null);
     setRolledNumber(1);
-     setErrorVisible(false); 
+    setErrorVisible(false); 
   };
 
   return (
@@ -54,15 +54,15 @@ function GamePlay() {
             <p className="error-message">You have not selected any number</p>
           )}{" "}
           <ul>
-            {[1, 2, 3, 4, 5, 6].map((num) => (
-              <li key={num}>
+            {arrNum.map((value, i) => (
+              <li key={i}>
                 <button
                   className={`select-no ${
-                    selectedNumber === num ? "selected" : ""
+                    selectedNumber === value ? "selected" : ""
                   }`}
-                  onClick={() => handleNumberSelect(num)}
+                  onClick={() => handleNumberSelect(value)}
                 >
-                  {num}
+                  {value}
                 </button>
               </li>
             ))}
