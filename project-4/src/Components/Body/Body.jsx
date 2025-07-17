@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./Body.css";
 import Card from "../Card/Card";
 
-const Body = ({ searchValue }) => {
+const Body = ({ searchValue, filterFoodType }) => {
   const cardItems = [
     {
       title: "Boiled Eggs",
@@ -56,23 +56,23 @@ const Body = ({ searchValue }) => {
       price: "$25.00",
     },
   ];
-  const filteredItems = cardItems.filter((item) =>
-    item.title.toLowerCase().includes(searchValue.toLowerCase())
-  );
-  // Filter card items based on search input
+
+  const filteredItems = cardItems.filter((item) => {
+    const matchesSearch = item.title
+      .toLowerCase()
+      .includes(searchValue.toLowerCase());
+    const matchesFilter =
+      filterFoodType === "All" || item.tag === filterFoodType;
+
+    return matchesSearch && matchesFilter;
+  });
+
   return (
     <div className="body">
       <div className="container">
         <div className="card-list">
           {filteredItems.map((item, index) => (
-            <Card
-              key={index}
-              tag={item.tag}
-              title={item.title}
-              description={item.description}
-              image={item.image}
-              price={item.price}
-            />
+            <Card key={index} {...item} />
           ))}
         </div>
         {filteredItems.length === 0 && (

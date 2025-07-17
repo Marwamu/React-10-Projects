@@ -1,12 +1,9 @@
 import React, { useState } from "react";
 import "./Navagationmodule.css";
 
-const Navgation = ({ setSearchValue, foodType }) => {
+const Navgation = ({ setSearchValue, setFilterFoodType   }) => {
   const handleChange = (e) => {
     setSearchValue(e.target.value);
-  };
-  const foodFilter = (e) => {
-    foodType(e.target.value);
   };
   const filterItem = ["All", "Breakfast", "Lunch", "Dinner"];
   return (
@@ -24,15 +21,16 @@ const Navgation = ({ setSearchValue, foodType }) => {
       </div>
       <div>
         <ul className="filter-items">
-          {filterItem.map((item, index) => {
-            return (
-              <li key={index} className="filter-item" onChange={foodFilter}
->
-                {item}
-              </li>
-            );
-          })}
-        </ul>
+        {filterItem.map((item, index) => (
+          <li
+            key={index}
+            className="filter-item"
+            onClick={() => setFilterFoodType(item)}
+          >
+            {item}
+          </li>
+        ))}
+      </ul>
       </div>
     </nav>
   );

@@ -5,10 +5,15 @@ import Body from "./Components/Body/Body";
 
 function App() {
   const [searchValue, setSearchValue] = useState("");
+
+  const [filterFoodType, setFilterFoodType] = useState("All");
   return (
     <>
-      <Navgation setSearchValue={setSearchValue}></Navgation>
-      <Body searchValue={searchValue}></Body>
+      <Navgation
+        setSearchValue={setSearchValue}
+        setFilterFoodType={setFilterFoodType}
+      />
+      <Body searchValue={searchValue} filterFoodType={filterFoodType} />
     </>
   );
 }
